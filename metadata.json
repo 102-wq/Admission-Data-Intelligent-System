@@ -1,0 +1,6 @@
+{
+  "name": "招生数据动态表格",
+  "description": "一个可以编辑、自动计算、生成数据并支持一键导出CSV格式的招生数据表格工具，预置2026年6月真实招生数据。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

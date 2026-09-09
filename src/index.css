@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Custom Theme Colors mapped to CSS variables to support dynamic dark-mode adaptations */
+  --color-slate-150: var(--slate-150);
+  --color-slate-205: var(--slate-205);
+  --color-slate-250: var(--slate-250);
+  --color-slate-350: var(--slate-350);
+  --color-slate-450: var(--slate-450);
+  --color-slate-605: var(--slate-605);
+  --color-slate-650: var(--slate-650);
+  --color-slate-705: var(--slate-705);
+  --color-slate-850: var(--slate-850);
+  --color-indigo-850: var(--indigo-850);
+  --color-sky-850: var(--sky-850);
+  --color-emerald-450: var(--emerald-450);
+  --color-emerald-505: var(--emerald-505);
+  --color-emerald-550: var(--emerald-550);
+}
+
+:root {
+  --slate-150: #e9edf3;
+  --slate-205: #cbd5e1;
+  --slate-250: #b8c7db;
+  --slate-350: #94a3b8;
+  --slate-450: #7a8fa6;
+  --slate-605: #4a5d73;
+  --slate-650: #334354;
+  --slate-705: #384554;
+  --slate-850: #1a2333;
+  --indigo-850: #1b1947;
+  --sky-850: #0a3a5c;
+  --emerald-450: #34d399;
+  --emerald-505: #10b981;
+  --emerald-550: #047857;
+}
+
+/* Override custom scale variables under dark selector to keep them visually comfortable and highly readable */
+.dark,
+.theme-dark-override {
+  --slate-150: #1e293b; /* slate-800 for dark mode borders */
+  --slate-205: #94a3b8; /* slate-400 for clean subtext */
+  --slate-250: #334155; /* slate-700 */
+  --slate-350: #475569; /* slate-600 */
+  --slate-450: #94a3b8; /* slate-400 for clean text */
+  --slate-605: #cbd5e1; /* slate-300 for readable bold labels */
+  --slate-650: #f1f5f9; /* slate-100 */
+  --slate-705: #f1f5f9; /* slate-100 */
+  --slate-850: #1e293b; /* slate-800 for dark mode elements */
+  --indigo-850: #1e1b4b; /* indigo-950 */
+  --sky-850: #082f49; /* sky-950 */
+  --emerald-450: #10b981; /* emerald-500 */
+  --emerald-505: #34d399; /* emerald-400 */
+  --emerald-550: #059669; /* emerald-600 */
+}
+
+/* --------------------------------------------------
+   Dark Theme Fallbacks & Overrides for High Contrast
+   -------------------------------------------------- */
+
+/* Default text color fallback for the dark page container */
+.dark {
+  color: #e2e8f0; /* Default body text to slate-200, extremely eye-friendly, readable and not too harsh */
+}
+
+/* Fallback for light mode backgrounds that might look "too bright" under dark mode */
+.dark .bg-white:not([class*="dark:bg-"]),
+.theme-dark-override .bg-white:not([class*="dark:bg-"]) {
+  background-color: #0f172a !important; /* Elegant slate-900 background instead of bright white */
+}
+
+.dark .bg-slate-50:not([class*="dark:bg-"]),
+.dark .bg-slate-100:not([class*="dark:bg-"]),
+.theme-dark-override .bg-slate-50:not([class*="dark:bg-"]),
+.theme-dark-override .bg-slate-100:not([class*="dark:bg-"]) {
+  background-color: #090d16 !important; /* Eye-safe dark slate-950 background */
+}
+
+.dark .bg-slate-150:not([class*="dark:bg-"]),
+.dark .bg-slate-200:not([class*="dark:bg-"]),
+.theme-dark-override .bg-slate-150:not([class*="dark:bg-"]),
+.theme-dark-override .bg-slate-200:not([class*="dark:bg-"]) {
+  background-color: #1e293b !important; /* Soft slate-800 background */
+}
+
+/* Fallback for light mode borders that might leak as bright white lines in dark mode */
+.dark .border-slate-100:not([class*="dark:border-"]),
+.dark .border-slate-150:not([class*="dark:border-"]),
+.dark .border-slate-200:not([class*="dark:border-"]),
+.theme-dark-override .border-slate-100:not([class*="dark:border-"]),
+.theme-dark-override .border-slate-150:not([class*="dark:border-"]),
+.theme-dark-override .border-slate-200:not([class*="dark:border-"]) {
+  border-color: #1e293b !important; /* Subtle, eye-safe dark border instead of white borders */
+}
+
+/* Fallback for light-mode text colors so they display beautifully without washing out visual hierarchy */
+.dark .text-slate-950:not([class*="dark:text-"]),
+.dark .text-slate-900:not([class*="dark:text-"]),
+.theme-dark-override .text-slate-950:not([class*="dark:text-"]),
+.theme-dark-override .text-slate-900:not([class*="dark:text-"]) {
+  color: #ffffff !important; /* Pure white for headings and high priority text */
+}
+
+.dark .text-slate-800:not([class*="dark:text-"]),
+.dark .text-slate-700:not([class*="dark:text-"]),
+.theme-dark-override .text-slate-800:not([class*="dark:text-"]),
+.theme-dark-override .text-slate-700:not([class*="dark:text-"]) {
+  color: #f1f5f9 !important; /* Bright slate-100 for primary paragraphs and labels */
+}
+
+.dark .text-slate-650:not([class*="dark:text-"]),
+.dark .text-slate-600:not([class*="dark:text-"]),
+.dark .text-slate-500:not([class*="dark:text-"]),
+.theme-dark-override .text-slate-650:not([class*="dark:text-"]),
+.theme-dark-override .text-slate-600:not([class*="dark:text-"]),
+.theme-dark-override .text-slate-500:not([class*="dark:text-"]) {
+  color: #cbd5e1 !important; /* Soft slate-300 for readable secondary text */
+}
+
+/* SVG and chart styles under dark mode */
+.dark svg text,
+.theme-dark-override svg text {
+  fill: #94a3b8 !important; /* Soft, readable grey for chart ticks and labels, not too bright */
+}
+
+.dark svg line,
+.theme-dark-override svg line {
+  stroke: #1e293b !important;
+}
+
+.dark svg line[stroke="#cbd5e1"],
+.theme-dark-override svg line[stroke="#cbd5e1"] {
+  stroke: #334155 !important;
+}
+
+.dark svg line[stroke="#f1f5f9"],
+.theme-dark-override svg line[stroke="#f1f5f9"] {
+  stroke: #1e293b !important;
+}
+
+.dark .hover\:bg-slate-50:hover,
+.theme-dark-override .hover\:bg-slate-50:hover {
+  background-color: #1e293b !important;
+}
+
+/* Scrollbar styling for touch friendliness */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* --------------------------------------------------
+   Print & PDF Export Media Styles
+   -------------------------------------------------- */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm 10mm 10mm 10mm;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+  }
+
+  /* Hide background elements, navigation and overlay backdrop */
+  #major-detail-dashboard-modal-overlay {
+    position: static !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+    overflow: visible !important;
+    z-index: auto !important;
+  }
+
+  .major-detail-dashboard-modal {
+    position: static !important;
+    max-height: none !important;
+    height: auto !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    overflow: visible !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Hide interactive controls and non-printable buttons during print */
+  button,
+  .no-print,
+  .print-hide,
+  select,
+  input,
+  textarea {
+    display: none !important;
+  }
+
+  /* Show print-only header elements */
+  .print-show {
+    display: block !important;
+  }
+
+  /* Fix high color contrast for charts & backgrounds */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Prevent page breaks inside cards */
+  .grid > div,
+  .border,
+  .rounded-xl,
+  .rounded-2xl {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
